@@ -1,0 +1,580 @@
+/* ── Layout ── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+/* ── Header ── */
+.app-header {
+  background: var(--primary);
+  color: #fff;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 64px;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ── Tab Navigation ── */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* ── Main ── */
+.app-main {
+  flex: 1;
+  padding: 32px 24px;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
+.app-footer {
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 13px;
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+/* ── Calculator Card ── */
+.calc-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+/* ── Form Panel ── */
+.calc-form {
+  padding: 32px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calc-title {
+  font-size: 22px;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+/* ── Input Wrappers ── */
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  overflow: hidden;
+}
+
+.input-wrap:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.input-prefix,
+.input-suffix {
+  padding: 0 10px;
+  font-size: 15px;
+  color: var(--text-light);
+  background: #f8fafc;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  border-right: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.input-suffix {
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+.input-wrap input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  font-size: 15px;
+  color: var(--text-dark);
+  background: transparent;
+  width: 100%;
+  min-width: 0;
+}
+
+.input-wrap input::placeholder {
+  color: #c0c8d4;
+}
+
+/* ── Select ── */
+.select-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.select-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* ── Checkbox ── */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Calculate Button ── */
+.calc-btn {
+  margin-top: auto;
+  padding: 13px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  letter-spacing: 0.2px;
+}
+
+.calc-btn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.calc-btn:active {
+  transform: translateY(1px);
+}
+
+/* ── Results Panel ── */
+.results-panel {
+  padding: 32px;
+  background: var(--primary-light);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.results-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 24px;
+}
+
+/* ── Monthly Payment Hero ── */
+.result-hero {
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+
+.result-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.result-amount {
+  display: block;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+/* ── Breakdown Table ── */
+.result-breakdown {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.breakdown-row:last-child {
+  border-bottom: none;
+}
+
+.breakdown-row.total {
+  font-weight: 700;
+  color: var(--text-dark);
+  background: #f8fafc;
+}
+
+.breakdown-row.pmi span:first-child::after {
+  content: ' *';
+  color: var(--warning);
+}
+
+/* ── Stacked Bar (Auto Loan) ── */
+.interest-bar-wrap {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.interest-bar {
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  margin: 8px 0;
+  background: var(--border);
+}
+
+.interest-bar-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.interest-bar-fill.principal {
+  background: var(--primary);
+}
+
+.interest-bar-fill.interest {
+  background: var(--accent);
+}
+
+.interest-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* ── Summary Chips (Mortgage) ── */
+.result-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.summary-item {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-light);
+}
+
+.summary-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.pmi-note {
+  font-size: 12px;
+  color: var(--warning);
+  text-align: center;
+}
+
+/* ── Amortization Section ── */
+.amort-section {
+  margin-top: 16px;
+}
+
+.amort-toggle-btn {
+  width: 100%;
+  padding: 13px;
+  background: var(--card-bg);
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.2px;
+}
+
+.amort-toggle-btn:hover {
+  background: var(--primary-light);
+}
+
+.amort-wrap {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.amort-note {
+  font-size: 13px;
+  color: var(--text-light);
+  padding: 12px 20px 0;
+  font-style: italic;
+}
+
+.amort-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.amort-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 520px;
+}
+
+.amort-table thead tr {
+  background: var(--primary);
+  color: #fff;
+}
+
+.amort-table th {
+  padding: 11px 16px;
+  text-align: right;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.amort-table th:first-child {
+  text-align: left;
+}
+
+.amort-table td {
+  padding: 10px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.amort-table td:first-child {
+  text-align: left;
+}
+
+/* Year rows */
+.amort-year-row {
+  background: #f0f4f8;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: background 0.12s;
+}
+
+.amort-year-row:hover {
+  background: #e2eaf4;
+}
+
+.amort-year-row td {
+  color: var(--text-dark);
+  border-bottom: 1px solid #d1dbe8;
+}
+
+.amort-chevron {
+  display: inline-block;
+  width: 16px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+/* Month rows */
+.amort-month-row {
+  background: #fff;
+}
+
+.amort-month-row:hover {
+  background: #f8fafc;
+}
+
+.amort-month-label {
+  padding-left: 32px !important;
+  color: var(--text-light) !important;
+  font-size: 13px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 16px;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 14px 0;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .app-title {
+    font-size: 18px;
+  }
+
+  .tab-btn {
+    font-size: 14px;
+    padding: 7px 14px;
+  }
+
+  .app-main {
+    padding: 20px 16px;
+  }
+
+  .calc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .calc-form {
+    padding: 24px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .results-panel {
+    padding: 24px 20px;
+  }
+
+  .result-amount {
+    font-size: 34px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .result-summary {
+    grid-template-columns: 1fr;
+  }
+}
